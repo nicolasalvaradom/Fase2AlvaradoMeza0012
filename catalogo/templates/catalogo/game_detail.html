@@ -1,0 +1,19 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<div class="container d-flex flex-column">
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-3">{{game.title}}</h1>
+      <p class="lead"><strong>Desarrollador:</strong>{{game.developer}}</p>
+      <p class="lead"><strong>Editor:</strong>{{game.editor}}</p>
+      <p class="lead"><strong>Descripción:</strong>{{game.summary}}</p>
+      <p class="lead"><strong>Genero:</strong> {% for genre in game.genre.all %} {{ genre }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
+      <p class="lead"><img class="card-img-top" src="{{ game.image }}"></p>
+
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}

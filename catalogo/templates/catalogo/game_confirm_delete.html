@@ -1,0 +1,28 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<body>
+    <div class="page-section portfolio container page-section-heading text-uppercase text-secondary mb-0 ">
+        <h2 class="titulotp" align="center">Borrar Juego</h2>
+
+        <center><h3>¿Estás seguro de borrar este juego?</h3>
+            <br>
+            <h4>Titulo de juego: {{ game.title }}</h4>
+            <br>
+            <div style="height: 300px; width: 500px;">
+                <img class="card-img-top card mb-2" src="{{ game.image }}">
+            </div>
+        
+        <form action="" method="POST">
+        {% csrf_token %}
+         <div style="width: 50%;">
+            <a href="{% url 'game-detail' game.pk %}"class="btn btn-primary btn-xl" style="float: left;">Atras</a>
+            <button type="submit" class="save btn btn-primary btn-xl" style="float: right;">Borrar</button>
+         </div>
+         
+        </form>
+    </center>
+    </div>
+
+</body>
+{% endblock %}

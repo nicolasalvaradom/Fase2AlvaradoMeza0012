@@ -18,34 +18,20 @@ class Genre(models.Model):
 		"""String for representing the Model object."""
 		return self.name
 
-class Developer(models.Model):
-    #Model representing a book genre."""
-	name = models.CharField(max_length=200)
-	summary = models.TextField(max_length=1000)
-
-	class Meta:
-		ordering = ['name']
-
-	def get_absolute_url(self):
-		return reverse('genre-detail', args=[str(self.id)])
-
-	def __str__(self):
-		"""String for representing the Model object."""
-		return self.name
-
 
 class Game(models.Model):
     
 	id = models.UUIDField(primary_key=True, default=uuid.uuid4)
 	title = models.CharField(max_length=200)
-	developer = models.ForeignKey('Developer', on_delete=models.SET_NULL, null=True)
+	developer = models.TextField(max_length=200)
 	editor= models.TextField(max_length=200)
 	summary = models.TextField(max_length=1000, help_text='Deja descripcion del Juego')
 	genre = models.ManyToManyField(Genre)
+	image = models.ImageField(upload_to='imgs/', null=True, blank=True)
     
 	def __str__(self):
 		return self.title
     
 	def get_absolute_url(self):
 		"""Returns the url to access a detail record for this book."""
-		return reverse('book-detail', args=[str(self.id)])
+		return reverse('game-detail', args=[str(self.id)])
