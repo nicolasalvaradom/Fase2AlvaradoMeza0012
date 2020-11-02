@@ -26,7 +26,7 @@ class Game(models.Model):
 	developer = models.TextField(max_length=200)
 	editor= models.TextField(max_length=200)
 	summary = models.TextField(max_length=1000, help_text='Deja descripcion del Juego')
-	genre = models.ManyToManyField(Genre)
+	genre = models.ForeignKey('Genre', on_delete=models.SET_NULL, null=True, blank=False)
 	image = models.ImageField(upload_to='imgs/', null=True, blank=True)
     
 	def __str__(self):

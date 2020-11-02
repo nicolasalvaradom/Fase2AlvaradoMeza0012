@@ -28,7 +28,7 @@ class GameForm(forms.ModelForm):
             'class':'form-control'
         }
     ))
-    editor = forms.CharField(label='Editor', max_length=100,widget=forms.URLInput(
+    editor = forms.CharField(label='Editor', max_length=100,widget=forms.Textarea(
         attrs={
             'class':'form-control'
         }

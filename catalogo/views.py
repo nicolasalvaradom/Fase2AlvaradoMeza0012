@@ -60,7 +60,11 @@ from django.views import generic
 
 class GameListView(generic.ListView):
     model = Game
+    template_name = 'templates/catalogo/game_list.html'
+    queryset = Game.objects.all()
+
     paginate_by = 10
+    
 class GameDetailView(generic.DetailView):
     model = Game
 
@@ -124,7 +128,7 @@ def game_edit(request, pk):
         if form.is_valid():
             post = form.save()
             post.save()
-            return redirect('game-detail', pk=post.pk)
+            return redirect('game_detail', pk=post.pk)
     else:
         form = GameForm(instance=post)
     return render(request, 'catalogo/game_form.html', {'form': form})
